@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Blog Cute</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
@@ -13,18 +14,8 @@
     <div id="app">
       <div class="container">
         <div class="row">
-          <div class="col-md-3 col-md-offset-2">
-            <header-sidebar-list-article></header-sidebar-list-article>
-            <ul class="list-group">
-              <article-list v-for="article in articles" v-bind:contents="article" v-bind:key="article._id" v-on:get-isilist="getIsiList(article)"></article-list>
-            </ul>
-          </div>
-          <div class="col-md-7">
-            <header-isi-list-article></header-isi-list-article>
-            <div class="list-group-item">
-              <article-content v-bind:content="isilist"></article-content>
-            </div>
-          </div>
+            <article-list v-bind:articlesprops="articles"></article-list>
+            <router-view v-bind:content="articles"></router-view>
         </div>
       </div>
     </div>
