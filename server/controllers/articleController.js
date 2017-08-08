@@ -11,7 +11,7 @@ function getAllArticle(req, res) {
 }
 
 function getOneArticle(req, res) {
-  Article.find({
+  Article.findOne({
     _id: req.params.id
   })
   .then(data => {
