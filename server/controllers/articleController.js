@@ -30,7 +30,7 @@ var getAllArticle = (req,res)=>{
 var findOneArticle = (req,res)=>{
   Article.findById(req.params.id,(err,data)=>{
     if (err) {
-      re.send(err)
+      res.send(err)
     }
     console.log(data);
     res.send(data)

@@ -10,7 +10,7 @@
       <div id="navMenuExample" class="navbar-menu">
         <div class="navbar-start">
           <div class="navbar-item is-tab is-hoverable">
-            <a class="navbar-item">Home</a>
+            <router-link to="/"><a class="navbar-item">Home</a></router-link>
           </div>
           <div class="navbar-item is-tab is-hoverable">
             <a class="navbar-item">About Us</a>

@@ -22,8 +22,8 @@ export default {
     }
   },
   props: ['id'],
-  watch: {
-    id (paramId) {
+  methods: {
+    getArticleDetail (paramId) {
       this.$http.get(`http://localhost:3000/blog/article/${paramId}`)
       .then(res => {
         this.title = res.data.title
@@ -34,6 +34,14 @@ export default {
         console.log(err)
       })
     }
+  },
+  watch: {
+    id (paramId) {
+      this.getArticleDetail(paramId)
+    }
+  },
+  created () {
+    this.getArticleDetail(this.id)
   }
 }
 </script>
