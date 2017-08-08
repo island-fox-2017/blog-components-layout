@@ -2,12 +2,14 @@ Vue.component('side-bar', {
   props:['banyakartikel'],
   template: `
   <div>
-    <div class="list-group-item" v-for="article in banyakartikel">{{ article.title }}</div> 
+    <div v-for="article in banyakartikel">
+      <router-link :to="'/articles/'+article._id" class="list-group-item">{{ article.title }}</div> 
+    </div>
   </div>
   `
 })
 
-Vue.component('main-page', {
+const mainPage = Vue.component('main-page', {
   props:['articles'],
   template: `
   <div>
@@ -19,21 +21,37 @@ Vue.component('main-page', {
   </div>
   `
 })
-// 
-// const routes = [
-//   {path: '/articles/article.title', component: 'side-bar'}
-// ]
-// 
-// const router = new VueRouter({
-//   routes
-// })
+
+const Foo = Vue.component('routerlink', 
+  { template: '<div>foo</div>' }
+)
+
+const Home = Vue.component('home-page',
+  { template: `
+  <div>
+    <h1 class="list-group"><strong>Welcome</h3>
+    <p class="text-justify">Ini halaman Home</p>
+  </div>
+  `}
+)
+
+const routes = [
+  {path: '/foo', component: Foo},
+  {path: '/articles', component: mainPage},
+  {path: '/home', component: Home}
+]
+
+const router = new VueRouter({
+  routes
+})
 
 new Vue({
   el: '#app',
+  router,
   data: {
     // message: 'hello Vue!',
     articles: [],
-    sub_article: {}
+    // sub_article: {}
   },
   created(){
     let self = this;

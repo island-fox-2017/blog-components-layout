@@ -34,8 +34,10 @@
           <li><a>Learn Blog Component</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
+          <!-- <li><a href="#">Home</a></li> -->
+          <!-- <li><a href="#">About</a></li> -->
+          <li><router-link to="/home">Home</router-link></li>
+          <li><router-link to="/articles">Articles</router-link></li>
           <li><a href="#">Profil</a></li>
           <li><a href="#">Category</a></li>
         </ul>
@@ -88,18 +90,17 @@
           </div>
         </div>
         <div class="col-md-8">
-          <main-page :articles="top3" />
-          <div class="text-center"><a href="#">Alice in wonderland</a></div>
-            <p class="text-center">$23</p>
+          <!-- <main-page :articles="top3" /> -->
+          <router-view :articles="top3"></router-view>
         </div>
     </div>
   </div>
   </div>
   
-  <div>
-    <a href="#">HOME</a>
-  </div>
-      
+  <!-- <div>
+    <router-link to="/foo">Go to Foo</router-link>
+    <router-view></router-view>
+  </div>     -->
       
       
   <!-- div app_id vue -->
