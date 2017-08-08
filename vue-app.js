@@ -7,17 +7,42 @@ Vue.component('side-bar', {
   `
 })
 
+Vue.component('main-page', {
+  props:['articles'],
+  template: `
+  <div>
+    <div v-for="a in articles">
+      <h3 class="list-group"><strong>{{ a.title }}</strong></h3>
+      <p class="text-justify">{{ a.description }}</p>
+      <button class="btn btn-primary">Read more</button>
+    </div>
+  </div>
+  `
+})
+// 
+// const routes = [
+//   {path: '/articles/article.title', component: 'side-bar'}
+// ]
+// 
+// const router = new VueRouter({
+//   routes
+// })
+
 new Vue({
   el: '#app',
   data: {
     // message: 'hello Vue!',
-    articles: []
+    articles: [],
+    sub_article: {}
   },
   created(){
     let self = this;
     axios.get('http://localhost:3000/articles')
     .then(response => {
-      console.log(response);
+      response.data.map(teaser => {
+        teaser.description = teaser.description.split("\n")[0]
+      })
+      // console.log(response);
       self.articles = response.data
     })
     .catch(err => {
