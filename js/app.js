@@ -1,7 +1,7 @@
 
 const routes = [
-  { path: '/posts', component: posts_content},
-  { path: '/detail', component: detail_content}
+  { path: '/', component: posts_content},
+  { path: '/posts/:postID', component: detail_content, props: true}
 ]
 
 const router = new VueRouter({
