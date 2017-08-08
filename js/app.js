@@ -1,11 +1,13 @@
 
 const routes = [
   { path: '/', component: posts_content},
+  { path: '/posts', component: posts_content},
   { path: '/posts/:postID', component: detail_content, props: true}
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 const app = new Vue({

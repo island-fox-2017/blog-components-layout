@@ -9,7 +9,7 @@ const posts_content = Vue.component('posts-content', {
         <h2 class="blog-post-title"><router-link :to="'posts/'+article._id">{{ article.title }}</router-link></h2>
         <p class="blog-post-meta">December 23, 2013 by <a href="#">{{ article.author }}</a></p>
 
-        <p>{{ article.content }}</p>
+        <p>{{ article.content.substring(0,255) }}... <router-link :to="'posts/'+article._id">read more</router-link></p>
       </div><!-- /.blog-post -->
 
       <nav>
@@ -67,14 +67,12 @@ const detail_content = Vue.component('detail-content', {
         let self = this
         axios.get(`/articles/${this.postID}`)
         .then(response => {
+          console.log(response.data);
           self.article = response.data
         })
         .catch(err => {
           console.log(err);
         })
-      },
-      changeMsg: function () {
-
       }
     },
     watch: {
@@ -93,7 +91,7 @@ Vue.component('navbar', {
   <div class="blog-masthead">
     <div class="container">
       <nav class="blog-nav">
-        <a class="blog-nav-item active" href="#">Home</a>
+        <router-link class="blog-nav-item" to="/">Home</router-link>
         <a class="blog-nav-item" href="#">About</a>
       </nav>
     </div>
@@ -103,7 +101,7 @@ Vue.component('navbar', {
 Vue.component('blog-header', {
   template: `
   <div class="blog-header">
-    <h1 class="blog-title">Fajar's Blog</h1>
+    <h1 class="blog-title"><router-link to="/posts">Fajar's Blog</router-link></h1>
     <p class="lead blog-description">simple blog with Bootstrap.</p>
   </div>`
 })
