@@ -54,7 +54,8 @@ window.onload = function() {
         <h2>{{artikel.author}}</h2>
         <h3>{{artikel.date}}</h3>
         <p>{{artikel.content}}</p>
-        <button type="button" name="button" class="btn btn-primary">Read More</button>
+          <router-link :to="'/details/'+artikel._id"><button type="button" name="button" class="btn btn-primary">Read More</button></router-link>
+
       </div>
     </div>
     `,
@@ -90,13 +91,13 @@ window.onload = function() {
   Vue.component('sidebar', {
     props:['articles','detail-content'],
     template: `
-    <div class="container col-md-4">
+
       <div class="list-group">
-      <div v-for="artikel in articles">
+        <div v-for="artikel in articles">
           <router-link class="list-group-item" :to="'/details/'+artikel._id">{{artikel.title}}</router-link>
+        </div>
       </div>
-      </div>
-    </div>
+  
     `
   })
   Vue.component('mainpage', {
@@ -111,19 +112,6 @@ window.onload = function() {
         <button type="button" name="button" class="btn btn-primary">Read More</button>
       </div>
     </div>
-    `
-  })
-  Vue.component('detail',{
-    props:['artikel'],
-    template:`
-      <div>
-          <h1>{{artikel.title}}</h1>
-          <h2>by {{artikel.author}}</h2>
-          <h3>{{artikel.date}}</h3>
-          <div>
-          <p>{{artikel.content}}</p>
-          </div>
-      </div>
     `
   })
 

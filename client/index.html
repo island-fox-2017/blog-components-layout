@@ -25,18 +25,15 @@
     </div> -->
     <h1></h1>
 
-    <div id="app" class="container round-border">
-      <sidebar :articles="artikelList" :detail-content='detailArtikel'></sidebar>
-      <div class="container col-md-8">
-          <!-- <mainpage :main-articles="artikelList" ></mainpage> -->
-          <router-view>
-
-          </router-view>
-
+    <div id="app" class="">
+      <div class="container ">
+        <div class="col-md-3">
+          <sidebar :articles="artikelList" :detail-content='detailArtikel'></sidebar>
+        </div>
+        <div class="col-md-6">
+            <router-view></router-view>
+        </div>
       </div>
-
-
-
     </div>
 
 
