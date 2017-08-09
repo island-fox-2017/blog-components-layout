@@ -12,7 +12,7 @@ window.onload = function() {
     template:`
       <div>
           <h1>{{artikel.title}}</h1>
-          <h2>by {{artikel.author}}</h2>
+          <h2>{{artikel.author}}</h2>
           <h3>{{artikel.date}}</h3>
           <div>
           <p>{{artikel.content}}</p>
@@ -35,13 +35,52 @@ window.onload = function() {
           console.log(err);
         })
       }
+    },
+    created(){
+      this.detailArtikel()
     }
   });
+  const  home = Vue.component('mainpage', {
 
+    data : function() {
+      return{
+        mainArticles : []
+      }
+    },
+    template: `
+    <div  class="container round-border">
+      <div v-for="artikel in mainArticles" >
+        <h1>{{artikel.title}}</h1>
+        <h2>{{artikel.author}}</h2>
+        <h3>{{artikel.date}}</h3>
+        <p>{{artikel.content}}</p>
+        <button type="button" name="button" class="btn btn-primary">Read More</button>
+      </div>
+    </div>
+    `,
+    methods :{
+      getAll(){
+        let self = this
+        axios.get('http://localhost:3000/articles').
+        then(data=>{
+          data.data.map(teaser=>{
+            teaser.content = teaser.content.split("\n")[0]
+          })
+          self.mainArticles = data.data
+        }).catch(err=>{
+          console.log(err);
+        })
+      }
+    },
+    created(){
+      this.getAll()
+    }
+  })
   const routes = [
       { path: '/foo', component: Foo },
       { path: '/bar', component: Bar },
-      { path: '/details/:id', component: Details ,props:true}
+      { path: '/details/:id', component: Details ,props:true},
+      { path: '/', component: home,props:true}
   ]
   const router = new VueRouter({
     routes // short for `routes: routes`
