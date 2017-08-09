@@ -57,8 +57,8 @@ const allArticle = Vue.component('all-article', {
       <h3> Welcome to...</h3>
         <div v-for="isilist in content" class="list-group-item">
           <h3> {{ isilist.title }} </h3>
-          <p align="justify"> {{ isilist.article_content }} </p>
-          <p><b>Penulis</b>: {{ isilist.author }} </p>
+          <p align="justify"> {{ (isilist.article_content).substr(0,30) }}... </p>
+          <router-link :to="'/article-list/'+isilist._id"><button type="button"> Read More </button></router-link>
         </div>
     </div>
   `
