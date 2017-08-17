@@ -29,7 +29,7 @@ const rangkuman = Vue.component('rangkuman',{
             <h4>{{article.judul}}</h4>
             <p>{{article.isi}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
 
-            <a class="btn btn-primary"><router-link :to=" {path: '/detail/' + article._id}">More Details</router-link><span class="glyphicon glyphicon-chevron-right"></span></a>
+            <router-link :to=" {path: '/detail/' + article._id}"><a class="btn btn-primary">More Details<span class="glyphicon glyphicon-chevron-right"></span></a></router-link>
         </div>
       </div>
   </div>
