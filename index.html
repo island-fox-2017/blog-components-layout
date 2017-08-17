@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <body>
+    <div class="container" id='app'>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <div class="thumbnail">
+              <div class="caption">
+                <div class="panel-group">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse2">Menu</a>
+                      </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                      <ul class="list-group">
+                        <li class="list-group-item"><router-link to="/">Home</router-link></li>
+                        <li class="list-group-item">Summary</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <div class="thumbnail">
+              <div class="caption">
+                <!-- COLLAPSE -->
+                <side-bar :judul="judul_article"></side-bar>
+                <!-- END COLLAPSE -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- row content -->
+        <router-view :articles="summary_article"></router-view>
+        <!-- <rangkuman :articles="summary_article"></rangkuman> -->
+        <!-- /.row -->
+    </div>
+    <script src="app.js" type="text/javascript"></script>
+  </body>
+</html>
